@@ -9,32 +9,26 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class chuckleclicker implements ActionListener {
-public static void main(String[] args) {
-
-}
-
+JButton joke= new JButton();
+JButton punchline= new JButton();
 public void makeButtons() {
 JFrame frame= new JFrame();
 frame.setVisible(true);
 JPanel panel= new JPanel();
-JButton button= new JButton();
-JButton handle= new JButton();
 frame.add(panel);
-frame.add(handle);
-frame.add(button);
+panel.add(punchline);
+panel.add(joke);
 frame.pack();
-button.addActionListener(this);
-handle.addActionListener(this);
-	
+joke.addActionListener(this);
+punchline.addActionListener(this);
 }
-
-public void run() {
-	
-}
-
 @Override
 public void actionPerformed(ActionEvent arg0) {
-	// TODO Auto-generated method stub
-	
+	if(arg0.getSource()== joke) {
+		JOptionPane.showMessageDialog(null, "Hi, there is no joke!");
+	}
+if(arg0.getSource()== punchline) {
+		JOptionPane.showMessageDialog(null, "I'm glad you pressed this!");
+	}
 }
 }
