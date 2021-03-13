@@ -11,9 +11,13 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -57,10 +61,37 @@ JOptionPane.showMessageDialog(null, "Ask the fortune teller any question!");
    		 // 9. Find a spooky sound and put it in your _07_fortune_teller package (freesound.org)
    		 AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
    		 // 10. Play the sound
-
-   		 // 11. Use the pause() method below to wait until your music has finished
-
+play("src/_07_fortune_teller/creepy-noise.wav");
    		 // 12. Insert your completed Magic 8 ball code here
+	// 2. Make a variable that will hold a random number and put a random number into this variable using "new Random().nextInt(4)"
+int i= new Random().nextInt(4);
+	// 3. Print out this variable
+System.out.println(i);
+	// 4. Get the user to enter a question for the 8 ball
+JOptionPane.showInputDialog("Ask a question to the 8 ball :)");
+	// 5. If the random number is 0
+if(i==0) {
+	JOptionPane.showMessageDialog(null, "Yes!");
+}
+	// -- tell the user "Yes"
+
+	// 6. If the random number is 1
+if(i==1) {
+	JOptionPane.showMessageDialog(null, "No!");
+}
+	// -- tell the user "No"
+
+	// 7. If the random number is 2
+if(i==2) {
+	JOptionPane.showMessageDialog(null, "Maybe you should ask Google?");
+}
+	// -- tell the user "Maybe you should ask Google?"
+
+	// 8. If the random number is 3
+if(i==3) {
+	JOptionPane.showMessageDialog(null, "Are you really that dumb? You should know that!");
+}
+	// -- write your own answer
 
    	 }
 
@@ -81,7 +112,21 @@ JOptionPane.showMessageDialog(null, "Ask the fortune teller any question!");
     /**************** don't worry about the stuff under here *******************/
     
     BufferedImage fortuneTellerImage;
-
+public static synchronized void play(final String filename) {
+	new Thread(new Runnable() {
+		
+		public void run() {
+			try {
+				Clip clip= AudioSystem.getClip();
+				AudioInputStream inputstream= AudioSystem.getAudioInputStream(new File(filename));
+				clip.open(inputstream);
+				clip.start();
+			} catch(Exception e) {
+				System.out.println("play sound error"+e.getMessage());
+			}
+ 		}
+	}).start();
+}
 
 
     @Override
