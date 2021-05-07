@@ -9,20 +9,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 public class Calculator implements ActionListener{
-	public void setup() {
-		
-	addit();
-	subt();
-	mult();
-	divid();
-	JFrame frame=new JFrame("Simple Calculator");
-	JPanel panel= new JPanel();
+	int num1;
+	int num2;
 	JButton add= new JButton("Add");
 	JButton sub= new JButton("Sub");
 	JButton mul= new JButton("Mul");
 	JButton div= new JButton("Div");
 	JTextField input= new JTextField(10);
 	JTextField text= new JTextField(10);
+	public void setup() {
+	JFrame frame=new JFrame("Simple Calculator");
+	JPanel panel= new JPanel();
 	frame.add(panel);
 	panel.add(add);
 	panel.add(sub);
@@ -59,10 +56,27 @@ public class Calculator implements ActionListener{
 		// TODO Auto-generated method stub
 	}
 		
-
+	private void getNumbers(){
+	String text1=input.getText();
+	String text2=text.getText();
+	num1= Integer.parseInt(text1);
+	num2= Integer.parseInt(text2);
+}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		getNumbers();
+		if (e.getSource()==add) {
+		if 
+		}
+		else if (e.getSource()==sub) {
 		
+		}
+		else if (e.getSource()==mul) {
+	
+}
+		else if (e.getSource()==div) {
+	
+}
 	}	
 }
