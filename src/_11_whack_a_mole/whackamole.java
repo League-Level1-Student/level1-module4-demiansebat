@@ -11,8 +11,9 @@ import javax.swing.JPanel;
 public class whackamole implements ActionListener {
 	Random randy= new Random();
 	JButton molebutton;
+	JFrame frame;
 public void setup() {
-	JFrame frame= new JFrame ("Whack a Button!");
+	frame= new JFrame ("Whack a Button!");
 	JPanel panel= new JPanel();
 	frame.add(panel);
 	frame.setVisible(true);
@@ -28,18 +29,20 @@ public void setup() {
 			
 		}
 	}
-	frame.pack();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 }
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 if (e.getSource()==molebutton) {
-		speak( "Correct! I guess your not an ablsolute idiot after all!");
+		speak( "Correct!");
 	}
 else {
-	speak("How dumb could you possibly be?");
+	speak("Your very dumb!");
 }
+frame.dispose();
+setup();
+
 }
 static void speak(String words) {
     if( System.getProperty( "os.name" ).contains( "Windows" ) ) {
